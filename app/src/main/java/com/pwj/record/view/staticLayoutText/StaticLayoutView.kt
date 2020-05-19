@@ -11,7 +11,7 @@ import kotlin.properties.Delegates
  * Author:           pwj
  * Date:             2020/4/13 10:36
  * FileName:         StaticLayoutView
- * description:      Staticlayout
+ * description:      StaticLayout out
  */
 class StaticLayoutView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : View(context, attrs, defStyleAttr) {
 

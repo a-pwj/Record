@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <bitmap android:src="@mipmap/icon_splash_blue" />
+    </item>
+
+    <item android:top="70dp">
+        <bitmap
+            android:gravity="top"
+            android:src="@mipmap/icon_splash_logo" />
+    </item>
+
+    <item android:bottom="60dp">
+        <bitmap
+            android:gravity="bottom"
+            android:src="@mipmap/icon_splash_hint" />
+    </item>
+</layer-list>

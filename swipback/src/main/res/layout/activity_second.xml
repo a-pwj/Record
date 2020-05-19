@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/second"
-        style="@style/textview_button"
+        style="@style/text_button"
         android:text="second" />
 
 

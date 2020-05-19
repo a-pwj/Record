@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".ui.tools.ImOptionsMultiLineActivity">
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/bg_stoke_white"
+        android:hint="输入文字...."
+        android:minHeight="40dp"
+        android:minLines="1"
+        android:maxLines="5"
+        android:singleLine="true"
+        android:imeOptions="actionSend"
+        android:text=""
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@drawable/custom_cursor"
+        android:textSize="15sp" />
+
+</LinearLayout>

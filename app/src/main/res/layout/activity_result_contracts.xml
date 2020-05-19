@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/code1"
+                style="@style/text_button"
+                android:text="1、jump" />
+
+            <TextView
+                android:id="@+id/code2"
+                style="@style/text_button"
+                android:text="2、request Permission" />
+
+            <TextView
+                android:id="@+id/code3"
+                style="@style/text_button"
+                android:text="3、contact" />
+
+            <TextView
+                android:id="@+id/code4"
+                style="@style/text_button"
+                android:text="4、Take Picture" />
+
+            <TextView
+                android:id="@+id/code5"
+                style="@style/text_button"
+                android:text="5、Take Picture Custom" />
+
+            <TextView
+                android:id="@+id/code6"
+                style="@style/text_button"
+                android:text="6、customObserverBt" />
+
+            <TextView
+                android:id="@+id/code7"
+                style="@style/text_button"
+                android:text="6、Take Picture LiveData" />
+
+            <ImageView
+                android:id="@+id/photo"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

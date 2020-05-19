@@ -23,6 +23,9 @@ android {
         }
     }
 
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -31,9 +34,33 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation project(":libbase")
+
+    /** 丢掉 onActivityResult*/
+    implementation 'androidx.activity:activity:1.2.0-alpha04'
+    implementation 'androidx.fragment:fragment:1.3.0-alpha04'
+
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
+
+    implementation 'com.google.android.material:material:1.1.0'
+
+    /** 知乎广告图片加载*/
+    implementation project(":parallaximage")
+    /** 崩溃无效*/
+    implementation project(":Cockroach-x")
+
+    //不要直接使用implementation，使用implementation虽然不会在正式版中弹出内存泄漏的弹窗（因为LeakCanary内部做了限制），但是会增大约1mb的安装包体积
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.2'
+
+    /** Lottie */
+    implementation 'com.airbnb.android:lottie:2.8.0'
+
+    /** BaseRecyclerViewAdapterHelper */
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.3'
 }

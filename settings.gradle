@@ -1,2 +1,3 @@
 rootProject.name='Record'
 include ':app', ':camera', ':uidemo', ':libbase',':swipback'
+include ':parallaximage',":Cockroach-x"
