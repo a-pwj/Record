@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.pwj.record.R
 import com.pwj.record.ext.startExtActivity
 import com.pwj.record.ui.adpter.ToolsAdapter
+import com.pwj.record.ui.tools.comment.CommentListActivity
 import kotlinx.android.synthetic.main.activity_tools.*
 
 /**
@@ -26,6 +27,8 @@ class ToolsActivity : AppCompatActivity() {
                 OnItemClickListenr = { position ->
                     when (position) {
                         0 -> startExtActivity<ImOptionsMultiLineActivity>()
+                        1 -> startExtActivity<StethoActivity>()
+                        2 -> startExtActivity<CommentListActivity>()
                     }
                 }
             }
@@ -35,6 +38,8 @@ class ToolsActivity : AppCompatActivity() {
     private fun mockData(): Collection<String> {
         return mutableListOf<String>().apply {
             add("输入框 ImOptions MultiLine示例")
+            add("Stetho 示例")
+            add("评论列表")
         }
     }
 }

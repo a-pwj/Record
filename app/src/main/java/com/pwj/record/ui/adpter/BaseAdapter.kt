@@ -47,11 +47,11 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseAdapter.BaseViewHolder>
 
         fun <T : View> getView(viewId: Int): T {
             var view = mViews[viewId]
-            view?.let {
+            if (view == null) {
                 view = mConvertView.findViewById(viewId)
                 mViews.put(viewId, view)
             }
-            return view as T
+            return view!! as T
         }
     }
 }

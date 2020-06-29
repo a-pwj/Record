@@ -3,8 +3,10 @@ package com.pwj.record.dsl
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
+import android.os.Build
 import android.view.animation.Interpolator
 import android.view.animation.LinearInterpolator
+import androidx.annotation.RequiresApi
 
 /**
  * @Author:          pwj
@@ -19,11 +21,13 @@ abstract class Anim {
      */
     abstract var animator: Animator
     var builder: AnimatorSet.Builder? = null
+
     /**
      * 时长
      */
     var duration
         get() = 300L
+        @RequiresApi(Build.VERSION_CODES.HONEYCOMB)
         set(value) {
             animator.duration = value
         }
@@ -33,6 +37,7 @@ abstract class Anim {
      */
     var interpolator
         get() = LinearInterpolator() as Interpolator
+        @RequiresApi(Build.VERSION_CODES.HONEYCOMB)
         set(value) {
             animator.interpolator = value
         }
@@ -42,6 +47,7 @@ abstract class Anim {
      */
     var delay
         get() = 0L
+        @RequiresApi(Build.VERSION_CODES.HONEYCOMB)
         set(value) {
             animator.startDelay = value
         }
