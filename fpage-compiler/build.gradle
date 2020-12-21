@@ -1,0 +1,18 @@
+import com.pwj.dependency.Deps
+
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //用来生成java文件的，避免字符串拼接的尴尬
+    implementation Deps.AutoService.javapoet
+
+    //谷歌的帮助我们快速实现注解处理器
+    implementation Deps.AutoService.android
+    annotationProcessor Deps.AutoService.android
+
+    implementation project(':fpage-annotation')
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8

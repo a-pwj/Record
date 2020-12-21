@@ -1,3 +1,11 @@
-rootProject.name='Record'
-include ':app', ':camera', ':uidemo', ':libbase',':swipback'
-include ':parallaximage',":Cockroach-x"
+include ':hencoder'
+rootProject.name = 'Record'
+include ':fpage-annotation', ':fpage-compiler',':fpage-core'
+include ':MyPlugin'
+include ':floatview'
+include ':logcatLib'
+include ':fragment'
+include ':jetpack'
+include ':apt_annotation', ':apt_compiler'
+include ':app', ':camera', ':uidemo', ':libbase', ':swipback'
+include ':parallaximage', ":Cockroach-x"

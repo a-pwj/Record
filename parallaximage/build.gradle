@@ -1,16 +1,19 @@
+import com.pwj.dependency.DepBuild
+import com.pwj.dependency.Deps
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion DepBuild.compileVersion
+    buildToolsVersion DepBuild.buildVersion
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion DepBuild.minSdk
+        targetSdkVersion DepBuild.targetSdk
+        versionCode DepBuild.versionCode
+        versionName DepBuild.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -22,18 +25,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-
-    /** 丢掉 onActivityResult*/
-    implementation 'androidx.activity:activity:1.2.0-alpha03'
-    api 'com.squareup.picasso:picasso:2.71828'
-    api 'com.github.bumptech.glide:glide:4.11.0'
+    implementation Deps.Kotlin.stdlib
+    implementation Deps.Support.appCompat
+    implementation Deps.Support.core
+    implementation Deps.Views.recyclerview
+    implementation Deps.Picasso.picasso
+    implementation Deps.Glide.glide
 }

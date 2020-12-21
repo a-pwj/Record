@@ -15,24 +15,24 @@ class EasyReflect private constructor(val clazz: Class<*>, private var intstance
      *
      * 使用匹配参数的构造函数创建一个对象实例，并生成新的EasyReflect实例返回
      */
-    fun instance(vararg args: Any?): EasyReflect {
-        return
-    }
+//    fun instance(vararg args: Any?): EasyReflect {
+//
+//    }
 
     /**
      * 根据传入的参数类型匹配对应的构造器
      */
-    fun getConstructor(vararg types:Class<*>):ConstructorReflect{
+//    fun getConstructor(vararg types:Class<*>):ConstructorReflect{
+//
+//    }
 
-    }
-    co
 
 
     class ConstructorReflect(val constructor: Constructor<*> ,val upper :EasyReflect){
-        //参数是否可变
-         fun newInstanceI(vararg args:Any?):EasyReflect{
-            return create(constructor.newInstance(*args))
-        }
+//        //参数是否可变
+//         fun newInstanceI(vararg args:Any?):EasyReflect{
+//            return create(constructor.newInstance(*args))
+//        }
     }
 
 }

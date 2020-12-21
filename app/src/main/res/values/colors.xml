@@ -12,4 +12,9 @@
     <color name="text_gray">#2f2f2f</color>
     <color name="scrim">#99323232</color>
     <color name="dark_icon">#99000000</color>
+
+
+    <color name="theme">#FF03A9F4</color>
+    <color name="theme_pressed">#44a7d4</color>
+
 </resources>

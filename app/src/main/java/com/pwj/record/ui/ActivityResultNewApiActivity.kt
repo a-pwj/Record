@@ -1,28 +1,9 @@
 package com.pwj.record.ui
 
-import android.Manifest
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
-import androidx.activity.result.ActivityResultCallback
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.ActivityResultRegistry
-import androidx.activity.result.contract.ActivityResultContract
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import com.pwj.record.R
-import com.pwj.record.ext.showToast
 import kotlinx.android.synthetic.main.activity_result_contracts.*
 
 
@@ -34,8 +15,8 @@ import kotlinx.android.synthetic.main.activity_result_contracts.*
  */
 class ActivityResultNewApiActivity : AppCompatActivity(R.layout.activity_result_contracts), View.OnClickListener {
 
-    private lateinit var takePhotoObserver: TakePhotoObserver
-    private lateinit var takePhotoLiveData: TakePhotoLiveData
+//    private lateinit var takePhotoObserver: TakePhotoObserver
+//    private lateinit var takePhotoLiveData: TakePhotoLiveData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,107 +30,107 @@ class ActivityResultNewApiActivity : AppCompatActivity(R.layout.activity_result_
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.code1 -> {
-                /**跳转页面**/
-                val startActivity = prepareCall(ActivityResultContracts.StartActivityForResult()) {
-                    showToast(it?.data?.getStringExtra("prepareCall") ?: "")
-                }
-                startActivity.launch(Intent(this, ActivityForResultNewApiActivity::class.java))
-            }
-            R.id.code2 -> {
-                /**请求权限**/
-                val requestPermission = prepareCall(ActivityResultContracts.RequestPermissions()) { result ->
-                    showToast("request permission $result")
-                }
-                requestPermission.launch(arrayOf(Manifest.permission.READ_PHONE_STATE))
-            }
-            R.id.code3 -> {
-                /**通讯录**/
-                val contact = prepareCall(ActivityResultContracts.PickContact()) { result ->
-                    showToast("dial $result")
-                }
-                contact.launch(null)
-            }
-            R.id.code4 -> {
-                /**获取图片**/
-                prepareCall(ActivityResultContracts.TakePicture()) { result ->
-                    showToast("dial $result")
-                    photo.setImageBitmap(result)
-                }
-            }
-            R.id.code5 -> {
-                /**获取图片,自定义**/
-                prepareCall(TakePicDrawable()) { result ->
-                    showToast("take picture : $result")
-                    result?.let {
-                        photo.setImageDrawable(result)
-                    }
-                }
-            }
-            R.id.code6 -> {
-                /**获取图片,自定义2**/
-                takePhotoObserver = TakePhotoObserver(activityResultRegistry) { bitmap ->
-                    photo.setImageBitmap(bitmap)
-                }
-                lifecycle.addObserver(takePhotoObserver)
-                takePhotoObserver.takePicture()
-            }
-            R.id.code7 -> {
-                /**获取图片,自定义2**/
-                takePhotoLiveData = TakePhotoLiveData(activityResultRegistry)
-                takePhotoLiveData.observeForever(Observer { bitmap ->
-                    photo.setImageBitmap(bitmap)
-                })
-                takePhotoLiveData.takePhotoLauncher
-            }
+//            R.id.code1 -> {
+//                /**跳转页面**/
+//                val startActivity = prepareCall(ActivityResultContracts.StartActivityForResult()) {
+//                    showToast(it?.data?.getStringExtra("prepareCall") ?: "")
+//                }
+//                startActivity.launch(Intent(this, ActivityForResultNewApiActivity::class.java))
+//            }
+//            R.id.code2 -> {
+//                /**请求权限**/
+//                val requestPermission = prepareCall(ActivityResultContracts.RequestPermissions()) { result ->
+//                    showToast("request permission $result")
+//                }
+//                requestPermission.launch(arrayOf(Manifest.permission.READ_PHONE_STATE))
+//            }
+//            R.id.code3 -> {
+//                /**通讯录**/
+//                val contact = prepareCall(ActivityResultContracts.PickContact()) { result ->
+//                    showToast("dial $result")
+//                }
+//                contact.launch(null)
+//            }
+//            R.id.code4 -> {
+//                /**获取图片**/
+//                prepareCall(ActivityResultContracts.TakePicture()) { result ->
+//                    showToast("dial $result")
+//                    photo.setImageBitmap(result)
+//                }
+//            }
+//            R.id.code5 -> {
+//                /**获取图片,自定义**/
+//                prepareCall(TakePicDrawable()) { result ->
+//                    showToast("take picture : $result")
+//                    result?.let {
+//                        photo.setImageDrawable(result)
+//                    }
+//                }
+//            }
+//            R.id.code6 -> {
+//                /**获取图片,自定义2**/
+//                takePhotoObserver = TakePhotoObserver(activityResultRegistry) { bitmap ->
+//                    photo.setImageBitmap(bitmap)
+//                }
+//                lifecycle.addObserver(takePhotoObserver)
+//                takePhotoObserver.takePicture()
+//            }
+//            R.id.code7 -> {
+//                /**获取图片,自定义2**/
+//                takePhotoLiveData = TakePhotoLiveData(activityResultRegistry)
+//                takePhotoLiveData.observeForever(Observer { bitmap ->
+//                    photo.setImageBitmap(bitmap)
+//                })
+//                takePhotoLiveData.takePhotoLauncher
+//            }
         }
     }
 
-    class TakePicDrawable : ActivityResultContract<Void, Drawable>() {
-        override fun createIntent(context: Context, input: Void?): Intent {
-            return Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        }
-
-        override fun parseResult(resultCode: Int, intent: Intent?): Drawable? {
-            if (resultCode != Activity.RESULT_OK || intent == null) return null
-            val bitmap = intent.getParcelableExtra<Bitmap>("data")
-            return BitmapDrawable(bitmap)
-        }
-    }
-
-    class TakePhotoObserver(private val registry: ActivityResultRegistry, private val func: (Bitmap) -> Unit) : DefaultLifecycleObserver {
-        private lateinit var takePhoneLauncher:ActivityResultLauncher<Uri>
-
-        override fun onCreate(owner: LifecycleOwner) {
-            takePhoneLauncher = registry.register("key",ActivityResultContracts.TakePicture()) {
-                func(it)
-            }
-        }
-
-        fun takePicture(){
-            takePhoneLauncher
-        }
-    }
-
-    class TakePhotoLiveData(private val registry: ActivityResultRegistry) : LiveData<Bitmap>() {
-
-        lateinit var takePhotoLauncher: ActivityResultLauncher<Uri>
-
-        override fun onActive() {
-            super.onActive()
-            takePhotoLauncher = registry.register(
-                "key",
-                ActivityResultContracts.TakePicture()
-            ) { result ->
-                value = result
-            }
-        }
-
-        override fun onInactive() {
-            super.onInactive()
-            takePhotoLauncher.unregister()
-        }
-
-    }
+//    class TakePicDrawable : ActivityResultContract<Void, Drawable>() {
+//        override fun createIntent(context: Context, input: Void?): Intent {
+//            return Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+//        }
+//
+//        override fun parseResult(resultCode: Int, intent: Intent?): Drawable? {
+//            if (resultCode != Activity.RESULT_OK || intent == null) return null
+//            val bitmap = intent.getParcelableExtra<Bitmap>("data")
+//            return BitmapDrawable(bitmap)
+//        }
+//    }
+//
+//    class TakePhotoObserver(private val registry: ActivityResultRegistry, private val func: (Bitmap) -> Unit) : DefaultLifecycleObserver {
+//        private lateinit var takePhoneLauncher:ActivityResultLauncher<Uri>
+//
+//        override fun onCreate(owner: LifecycleOwner) {
+//            takePhoneLauncher = registry.register("key",ActivityResultContracts.TakePicture()) {
+//                func(it)
+//            }
+//        }
+//
+//        fun takePicture(){
+//            takePhoneLauncher
+//        }
+//    }
+//
+//    class TakePhotoLiveData(private val registry: ActivityResultRegistry) : LiveData<Bitmap>() {
+//
+//        lateinit var takePhotoLauncher: ActivityResultLauncher<Uri>
+//
+//        override fun onActive() {
+//            super.onActive()
+//            takePhotoLauncher = registry.register(
+//                "key",
+//                ActivityResultContracts.TakePicture()
+//            ) { result ->
+//                value = result
+//            }
+//        }
+//
+//        override fun onInactive() {
+//            super.onInactive()
+//            takePhotoLauncher.unregister()
+//        }
+//
+//    }
 
 }

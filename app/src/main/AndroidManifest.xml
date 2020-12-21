@@ -8,7 +8,12 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- // 拍照权限 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- // 自动对焦 -->
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
 
     <application
         android:name=".App"
@@ -19,7 +24,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.tools.comment.CommentListActivity"></activity>
+        <activity android:name=".ui.video.TestHzActivity"></activity>
+        <activity android:name=".ui.video.MediaRecordActivity" />
+        <activity android:name=".ui.video.MainVideoActivity" />
+        <activity android:name=".ui.clock.CustomClockViewActivity" />
+        <activity android:name=".ui.UITestActivity" />
+        <activity android:name=".ui.scroll.ScrollerActivity" />
+        <activity android:name=".ui.statusbar.StatusViewPagerActivity" />
+        <activity android:name=".ui.statusbar.StatusImgActivity" />
+        <activity android:name=".ui.statusbar.MainStatusActivity" />
+        <activity android:name=".ui.surfaceview.camera.ui.GoogleCameraActivity" />
+        <activity android:name=".ui.surfaceview.camera.ui.CameraActivity" />
+        <activity android:name=".ui.surfaceview.camera.CameraCustomActivity" />
+        <activity android:name=".ui.surfaceview.camera.MainCameraActivity" />
+        <activity android:name=".ui.surfaceview.ui.OpenGL1Activity" />
+        <activity android:name=".ui.tools.OKIOActivity" />
+        <activity android:name=".SimpleActivity" />
+        <activity android:name=".ui.surfaceview.ui.ImgCanvasActivity" />
+        <activity android:name=".ui.surfaceview.MainSurfaceActivity" />
+        <activity android:name=".ui.notification.NotificationActivity" />
+        <activity android:name=".ui.MainUIActivity" />
+        <activity android:name=".ui.tools.webp.WebpActivity" />
+        <activity android:name=".ioc.ToolsIocActivity" />
+        <activity android:name=".ui.tools.comment.CommentListActivity" />
         <activity android:name=".ui.tools.StethoActivity" />
         <activity android:name=".ui.tools.ImOptionsMultiLineActivity" />
         <activity android:name=".ui.tools.ToolsActivity" />
@@ -34,7 +61,7 @@
         <activity android:name=".ui.ActivityResultNewApiActivity" />
         <activity android:name=".ui.ExtTestActivity" />
         <activity android:name=".view.expandable.ExpandableActivity" />
-        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".ui.SplashActivity"
             android:theme="@style/SplashTheme"

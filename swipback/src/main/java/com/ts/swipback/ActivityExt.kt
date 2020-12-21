@@ -1,4 +1,4 @@
-package com.ts.uidemo
+package com.ts.swipback
 
 import android.content.Context
 import android.content.Intent

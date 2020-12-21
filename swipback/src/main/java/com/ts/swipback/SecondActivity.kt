@@ -1,8 +1,6 @@
 package com.ts.swipback
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.ts.uidemo.toActivity
 import kotlinx.android.synthetic.main.activity_second.*
 
 class SecondActivity : BaseSlideCloseActivity() {

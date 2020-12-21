@@ -1,0 +1,15 @@
+import com.pwj.dependency.Deps
+
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Deps.AutoService.javapoet
+
+    implementation Deps.AutoService.android
+    annotationProcessor Deps.AutoService.android
+    implementation project(':apt_annotation')
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8

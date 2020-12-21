@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
@@ -34,23 +33,23 @@ class ParallaxImageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_parallax_image)
 
         /**请求权限**/
-        prepareCall(ActivityResultContracts.RequestPermissions()) { result ->
-            var grant: Boolean = true
-            for ((key, value) in result) {
-                if (!value) {
-                    grant = false
-                    break
-                }
-            }
-            if (grant) {
-                initRecyclerView()
-            }
-        }.launch(
-            arrayOf(
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            )
-        )
+//        prepareCall(ActivityResultContracts.RequestPermissions()) { result ->
+//            var grant: Boolean = true
+//            for ((key, value) in result) {
+//                if (!value) {
+//                    grant = false
+//                    break
+//                }
+//            }
+//            if (grant) {
+//                initRecyclerView()
+//            }
+//        }.launch(
+//            arrayOf(
+//                Manifest.permission.READ_EXTERNAL_STORAGE,
+//                Manifest.permission.WRITE_EXTERNAL_STORAGE
+//            )
+//        )
     }
 
     private fun initRecyclerView() {

@@ -4,6 +4,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="?actionBarSize">
+
+        <TextView
+            android:id="@+id/record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:text="Record" />
+    </androidx.appcompat.widget.Toolbar>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -12,6 +26,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/code0"
+                style="@style/text_button"
+                android:text="0、沉浸状态栏" />
 
             <TextView
                 android:id="@+id/code1"
@@ -41,27 +60,28 @@
             <TextView
                 android:id="@+id/code6"
                 style="@style/text_button"
-                android:text="6、RecyclerView" />
+                android:text="6、UI" />
 
             <TextView
                 android:id="@+id/code7"
                 style="@style/text_button"
-                android:text="7、使用Activity 作为Dialog" />
+                android:text="7、工具集合" />
 
             <TextView
                 android:id="@+id/code8"
                 style="@style/text_button"
-                android:text="8、Lottie动画使用" />
+                android:text="8、fragment" />
 
             <TextView
                 android:id="@+id/code9"
                 style="@style/text_button"
-                android:text="9、工具集合" />
+                android:text="9、hencoder" />
 
             <TextView
                 android:id="@+id/code10"
                 style="@style/text_button"
-                android:text="8-3、canvas的书法家" />
+                android:text="10、opengl" />
+
 
         </LinearLayout>
 

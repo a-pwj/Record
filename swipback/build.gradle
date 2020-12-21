@@ -1,17 +1,21 @@
+import com.pwj.dependency.DepBuild
+import com.pwj.dependency.Deps
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion DepBuild.compileVersion
+    buildToolsVersion DepBuild.buildVersion
+
     defaultConfig {
         applicationId "com.ts.swipback"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion DepBuild.minSdk
+        targetSdkVersion DepBuild.targetSdk
+        versionCode DepBuild.versionCode
+        versionName DepBuild.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -37,26 +41,27 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    dataBinding {
-        enabled = true
-    }
 
+//    dataBinding {
+//        enabled = true
+//    }
+
+    buildFeatures {
+        dataBinding true
+        // for view binding:
+        // viewBinding true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.multidex:multidex:2.0.1'
-
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'com.google.android.material:material:1.2.0-alpha05'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-
-    implementation "androidx.slidingpanelayout:slidingpanelayout:1.0.0"
-
-    implementation 'com.tencent:mmkv:1.0.24'
+    implementation Deps.Kotlin.stdlib
+    implementation Deps.Support.appCompat
+    implementation Deps.Support.core
+    implementation Deps.Support.constraint
+    implementation Deps.Views.recyclerview
+    implementation Deps.Views.slidingpanelayout
+    implementation Deps.Others.mmkv
 
     implementation project(":libbase")
 }

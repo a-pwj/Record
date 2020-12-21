@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
+import com.pwj.record.MainActivity
 import com.pwj.record.R
 import com.pwj.record.ext.startExtActivity
 import kotlinx.android.synthetic.main.activity_splash.*

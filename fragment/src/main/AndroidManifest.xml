@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.pwj.fragment">
+
+    <application>
+        <activity  android:name=".MainFragmentActivity" />
+    </application>
+
+</manifest>

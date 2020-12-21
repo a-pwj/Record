@@ -1,0 +1,25 @@
+/**
+ * 1、apply 插件：应用 'groovy' 插件是因为我们的项目是使用 Groovy 语言开发的，'maven' 插件在后面发布插件时会用到；
+ * 2、dependencies：声明依赖；
+ * 3、uploadArchive：这里是一些 maven 相关的配置，包括发布仓库的位置、groupId、artifactId、版本号，这里为了调试方便把位置选在项目根目录下的 repo 文件夹。
+ */
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        //本地仓库路径，以放到项目根目录下的 repo 的文件夹为例
+        repository(url: uri('../MyPlugin'))
+        //groupId ，自行定义
+        pom.groupId = 'com.pwj.myplugin'
+        //artifactId
+        pom.artifactId = 'MyPlugin'
+        // 插件版本号
+        pom.version = '1.0.0'
+    }
+}
