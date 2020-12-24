@@ -24,7 +24,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.video.TestHzActivity"></activity>
+        <activity android:name=".ui.motionlayout.MainMotionLayoutActivity"></activity>
+        <activity android:name=".ui.switcher.MainSwitcherActivity" />
+        <activity android:name=".ui.video.MediaRecordTwoActivity" />
+        <activity android:name=".ui.video.TestHzActivity" />
+
+        <service android:name=".ui.video.record.RecordService" />
+
         <activity android:name=".ui.video.MediaRecordActivity" />
         <activity android:name=".ui.video.MainVideoActivity" />
         <activity android:name=".ui.clock.CustomClockViewActivity" />
@@ -40,7 +46,6 @@
         <activity android:name=".ui.surfaceview.ui.OpenGL1Activity" />
         <activity android:name=".ui.tools.OKIOActivity" />
         <activity android:name=".SimpleActivity" />
-        <activity android:name=".ui.surfaceview.ui.ImgCanvasActivity" />
         <activity android:name=".ui.surfaceview.MainSurfaceActivity" />
         <activity android:name=".ui.notification.NotificationActivity" />
         <activity android:name=".ui.MainUIActivity" />

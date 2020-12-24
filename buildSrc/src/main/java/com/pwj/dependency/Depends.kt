@@ -92,6 +92,9 @@ object Deps {
         const val mmkv = "com.tencent:mmkv:${Versions.mmkv}"
 
         const val okio = "com.squareup.okio:okio:2.7.0"
+
+        const val  seekBar ="com.crystal:crystalrangeseekbar:1.0.0"
+        const val  gravitysnaphelper ="com.github.rubensousa:gravitysnaphelper:2.2.0"
     }
 
     fun addRepos(handler: RepositoryHandler) {

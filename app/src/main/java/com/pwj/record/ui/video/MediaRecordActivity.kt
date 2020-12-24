@@ -131,6 +131,10 @@ class MediaRecordActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
     }
 
     private fun initEvent() {
+        recordManager.changeFormat(RecordFormat.WAV)
+        recordManager.changeRecordConfig(recordManager.recordConfig.setSampleRate(16000))
+        recordManager.changeRecordConfig(recordManager.recordConfig.setEncodingConfig(AudioFormat.ENCODING_PCM_16BIT))
+
         rgAudioFormat.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.rbPcm -> recordManager.changeFormat(RecordFormat.PCM)
@@ -162,10 +166,7 @@ class MediaRecordActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
     private fun initRecord() {
         recordManager.init(application, BuildConfig.DEBUG)
         recordManager.changeFormat(RecordFormat.WAV)
-        val recordDir: String = java.lang.String.format(
-            Locale.getDefault(), "%s/Record/com.zlw.main/",
-            Environment.getExternalStorageDirectory().getAbsolutePath()
-        )
+        val recordDir = "$filesDir/record/"
         recordManager.changeRecordDir(recordDir)
         initRecordEvent()
     }

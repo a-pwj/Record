@@ -61,9 +61,8 @@ public class WavUtils {
      *
      * @param pcmFile File
      * @param header  wavHeader
-     * @throws IOException Exception
      */
-    public static void pcmToWav(File pcmFile, byte[] header) throws IOException {
+    public static void pcmToWav(File pcmFile, byte[] header) {
         if (!RecordFileUtils.isFile(pcmFile)) {
             return;
         }

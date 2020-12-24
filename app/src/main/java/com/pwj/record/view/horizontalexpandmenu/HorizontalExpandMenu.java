@@ -253,8 +253,12 @@ public class HorizontalExpandMenu extends RelativeLayout {
                             }
                             break;
                         case Left:
-                            if (x == downX && y == downY && y >= buttonTop && y <= buttonBottom && x >= leftButtonLeft && x <= leftButtonRight) {
-                                expandMenu(expandAnimTime);
+                            if (x <= downX + Math.abs(touchSlop) && x >= downX - Math.abs(touchSlop)) {
+                                if (y <= downY + Math.abs(touchSlop) && y >= downY - Math.abs(touchSlop)) {
+                                    if (y >= buttonTop && y <= buttonBottom && x >= leftButtonLeft && x <= leftButtonRight) {
+                                        expandMenu(expandAnimTime);
+                                    }
+                                }
                             }
                             break;
                     }
