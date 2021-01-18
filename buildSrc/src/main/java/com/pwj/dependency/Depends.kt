@@ -19,6 +19,7 @@ object Deps {
         const val constraint = "androidx.constraintlayout:constraintlayout:${Versions.constraint}"
         const val design = "com.google.android.material:material:${Versions.material}"
         const val core = "androidx.core:core-ktx:${Versions.core}"
+
     }
 
     object Kotlin {
@@ -92,6 +93,10 @@ object Deps {
         const val mmkv = "com.tencent:mmkv:${Versions.mmkv}"
 
         const val okio = "com.squareup.okio:okio:2.7.0"
+
+        const val  seekBar ="com.crystal:crystalrangeseekbar:1.0.0"
+        const val  gravitysnaphelper ="com.github.rubensousa:gravitysnaphelper:2.2.0"
+        const val  pinyin4j ="com.github.open-android:pinyin4j:2.5.0"
     }
 
     fun addRepos(handler: RepositoryHandler) {

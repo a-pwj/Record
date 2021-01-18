@@ -1,6 +1,10 @@
 package com.pwj.record
 
+import android.Manifest
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.os.Build.VERSION
 import android.os.Bundle
 import android.view.GestureDetector
 import android.view.MotionEvent
@@ -8,18 +12,24 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.documentfile.provider.DocumentFile
 import com.pwj.fragment.MainFragmentActivity
 import com.pwj.hencoder.MainHenCoderActivity
 import com.pwj.logcat.LogcatDialog
+import com.pwj.record.bean.FileInfoBean
 import com.pwj.record.bean.Person
 import com.pwj.record.ext.showToast
 import com.pwj.record.ext.startExtActivity
 import com.pwj.record.ui.*
+import com.pwj.record.ui.file.FileManagerActivity
 import com.pwj.record.ui.statusbar.MainStatusActivity
 import com.pwj.record.ui.surfaceview.MainSurfaceActivity
 import com.pwj.record.ui.tools.ToolsActivity
+import com.pwj.record.utils.FileManager
 import com.pwj.record.view.expandable.ExpandableActivity
+import com.yanzhenjie.permission.AndPermission
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.HashSet
 import kotlin.properties.Delegates
 
 /**
@@ -37,6 +47,8 @@ import kotlin.properties.Delegates
  */
 class MainActivity : AppCompatActivity(R.layout.activity_main), View.OnClickListener {
 
+    private val FILERESULTQ = 100
+    private val FILERESULT = 101
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +70,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), View.OnClickList
         code8.setOnClickListener(this)
         code9.setOnClickListener(this)
         code10.setOnClickListener(this)
+        code11.setOnClickListener(this)
 
 
     }
@@ -103,8 +116,63 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), View.OnClickList
             R.id.code10 -> {
                 startExtActivity<MainSurfaceActivity>()
             }
+            R.id.code11 -> {
+                if (VERSION.SDK_INT >= 29 && getApplicationInfo().targetSdkVersion >= 29) {
+                    val intent = Intent("android.intent.action.OPEN_DOCUMENT")
+                    intent.addCategory("android.intent.category.OPENABLE")
+                    intent.type = "*/*"
+                    startActivityForResult(intent, FILERESULTQ)
+                } else {
+                    if (AndPermission.hasPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE))) {
+                        val intent = Intent(this, FileManagerActivity::class.java)
+                        startActivityForResult(intent, FILERESULT)
+                    } else {
+                        AndPermission.with(this)
+                            .runtime()
+                            .permission(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE))
+                            .rationale { context, data, executor ->  }//添加拒绝权限回调
+                            .onGranted { startActivityForResult(intent, FILERESULT) }
+                            .onDenied { }.start();
+                    }
+                }
+            }
         }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == FILERESULTQ) {
+                val uri = data?.data
+                uri?.let {
+                    val documentFile = DocumentFile.fromSingleUri(this, uri)
+                    if (documentFile == null) {
+                        showToast("文件获取出错")
+                    } else {
+                        if (documentFile.name != null && documentFile.type != null) {
+                            val path: String? = FileManager.getPathFromInputStreamUri(this, uri ,documentFile.name ?: "")
+//                            val fileLocal = FileData(documentFile.name ?: "", documentFile.type ?: "", documentFile.length(), path ?: "", "")
+//                            mPresenter.upFile(fileLocal)
+                            showToast("文件名字：${documentFile.name},文件路径：${path?:""}")
+                        } else {
+                            showToast("文件获取出错")
+                        }
+                    }
+                }
+            }
+            if (requestCode == FILERESULT) {
+                val selectedFileInfos: HashSet<FileInfoBean> = data!!.getSerializableExtra("sendSelectedFiles") as HashSet<FileInfoBean>
+                val var1: Iterator<FileInfoBean> = selectedFileInfos.iterator()
+                while (var1.hasNext()) {
+                    val fileInfo: FileInfoBean = var1.next() as FileInfoBean
+//                    val fileLocal = FileData(fileInfo.fileName, fileInfo.suffix, fileInfo.fileSize, fileInfo.filePath, "")
+//                    mPresenter.upFile(fileLocal)
+                    showToast("文件名字：${fileInfo.fileName},文件路径：${fileInfo.filePath?:""}")
+                }
+            }
+        }
+    }
+
 
     /**
      * 利用委托完成双击back退出

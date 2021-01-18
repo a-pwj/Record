@@ -23,7 +23,7 @@ public class ZLog {
         isLinkMode = linkMode;
     }
 
-    private static String tag = "IM SDK Log";
+    private static String tag = "ZLog";
     public static void setTag(String tag) {
         if (!TextUtils.isEmpty(tag)) {
             ZLog.tag = tag;

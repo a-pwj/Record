@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,6 +16,8 @@ import android.view.ViewConfiguration;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.RequiresApi;
 
 import com.pwj.record.R;
 
@@ -99,12 +102,12 @@ public class HorizontalExpandMenu extends RelativeLayout {
         defaultWidth = dip2px(mContext, 200);
         defaultHeight = dip2px(mContext, 40);
 
-        menuBackColor = typedArray.getColor(R.styleable.HorizontalExpandMenu_back_color, Color.WHITE);
-        menuStrokeSize = typedArray.getDimension(R.styleable.HorizontalExpandMenu_stroke_size, 1);
-        menuStrokeColor = typedArray.getColor(R.styleable.HorizontalExpandMenu_stroke_color, Color.GRAY);
-        menuCornerRadius = typedArray.getDimension(R.styleable.HorizontalExpandMenu_corner_radius, dip2px(mContext, 20));
+        menuBackColor = typedArray.getColor(R.styleable.HorizontalExpandMenu_menu_back_color, Color.WHITE);
+        menuStrokeSize = typedArray.getDimension(R.styleable.HorizontalExpandMenu_menu_stroke_size, 1);
+        menuStrokeColor = typedArray.getColor(R.styleable.HorizontalExpandMenu_menu_stroke_color, Color.GRAY);
+        menuCornerRadius = typedArray.getDimension(R.styleable.HorizontalExpandMenu_menu_corner_radius, dip2px(mContext, 20));
 
-        buttonStyle = typedArray.getInteger(R.styleable.HorizontalExpandMenu_button_style, Right);
+        buttonStyle = typedArray.getInteger(R.styleable.HorizontalExpandMenu_menu_button_style, Right);
         buttonIconDegrees = 90;
         buttonIconSize = typedArray.getDimension(R.styleable.HorizontalExpandMenu_button_icon_size, dip2px(mContext, 8));
         buttonIconStrokeWidth = typedArray.getDimension(R.styleable.HorizontalExpandMenu_button_icon_stroke_width, 8);
@@ -253,8 +256,12 @@ public class HorizontalExpandMenu extends RelativeLayout {
                             }
                             break;
                         case Left:
-                            if (x == downX && y == downY && y >= buttonTop && y <= buttonBottom && x >= leftButtonLeft && x <= leftButtonRight) {
-                                expandMenu(expandAnimTime);
+                            if (x <= downX + Math.abs(touchSlop) && x >= downX - Math.abs(touchSlop)) {
+                                if (y <= downY + Math.abs(touchSlop) && y >= downY - Math.abs(touchSlop)) {
+                                    if (y >= buttonTop && y <= buttonBottom && x >= leftButtonLeft && x <= leftButtonRight) {
+                                        expandMenu(expandAnimTime);
+                                    }
+                                }
                             }
                             break;
                     }
@@ -314,6 +321,7 @@ public class HorizontalExpandMenu extends RelativeLayout {
     /**
      * 设置菜单背景，如果要显示阴影，需在onLayout之前调用
      */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void setMenuBackground() {
         GradientDrawable gd = new GradientDrawable();
         gd.setColor(menuBackColor);

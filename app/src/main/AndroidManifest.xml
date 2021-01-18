@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.pwj.record">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -23,8 +24,17 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.video.TestHzActivity"></activity>
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
+        <activity android:name=".ui.file.FileListActivity" />
+        <activity android:name=".ui.file.FileManagerActivity" />
+        <activity android:name=".ui.motionlayout.MainMotionLayoutActivity" />
+        <activity android:name=".ui.switcher.MainSwitcherActivity" />
+        <activity android:name=".ui.video.MediaRecordTwoActivity" />
+        <activity android:name=".ui.video.TestHzActivity" />
+
+        <service android:name=".ui.video.record.RecordService" />
+
         <activity android:name=".ui.video.MediaRecordActivity" />
         <activity android:name=".ui.video.MainVideoActivity" />
         <activity android:name=".ui.clock.CustomClockViewActivity" />
@@ -40,7 +50,6 @@
         <activity android:name=".ui.surfaceview.ui.OpenGL1Activity" />
         <activity android:name=".ui.tools.OKIOActivity" />
         <activity android:name=".SimpleActivity" />
-        <activity android:name=".ui.surfaceview.ui.ImgCanvasActivity" />
         <activity android:name=".ui.surfaceview.MainSurfaceActivity" />
         <activity android:name=".ui.notification.NotificationActivity" />
         <activity android:name=".ui.MainUIActivity" />

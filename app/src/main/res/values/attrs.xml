@@ -5,20 +5,45 @@
 
     </declare-styleable>
 
+    <!-- ThumbnailMenu -->
+    <declare-styleable name="SpinMenu">
+        <attr name="scale_ratio" format="float" />
+        <attr name="hint_text_color" format="color"/>
+        <attr name="hint_text_size" format="dimension"/>
+    </declare-styleable>
 
     <!--注意这里的name要和自定义View的名称一致，不然在xml布局中无法引用-->
     <declare-styleable name="HorizontalExpandMenu">
-        <attr name="back_color" format="color"></attr>
-        <attr name="stroke_size" format="dimension"></attr>
-        <attr name="stroke_color" format="color"></attr>
-        <attr name="corner_radius" format="dimension"></attr>
-        <attr name="button_style">
+        <attr name="menu_back_color" format="color" />
+        <attr name="menu_stroke_size" format="dimension" />
+        <attr name="menu_stroke_color" format="color" />
+        <attr name="menu_corner_radius" format="dimension" />
+        <attr name="menu_button_style">
             <enum name="right" value="0"/>
             <enum name="left" value="1"/>
         </attr>
-        <attr name="button_icon_size" format="dimension"></attr>
-        <attr name="button_icon_stroke_width" format="dimension"></attr>
-        <attr name="button_icon_color" format="color"></attr>
-        <attr name="expand_time" format="integer"></attr>
+        <attr name="button_icon_size" format="dimension" />
+        <attr name="button_icon_stroke_width" format="dimension" />
+        <attr name="button_icon_color" format="color" />
+        <attr name="expand_time" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="Switcher">
+        <attr name="elevation" />
+        <attr name="switcher_width" format="dimension"/>
+        <attr name="switcher_height" format="dimension"/>
+        <attr name="android:checked" format="boolean" />
+        <attr name="switcher_on_color" format="color" />
+        <attr name="switcher_off_color" format="color" />
+        <attr name="switcher_icon_color" format="color" />
+    </declare-styleable>
+
+    <attr name="sj_label_text" format="reference|string" />
+
+    <declare-styleable name="EvaluationLevelView">
+        <attr name="sj_imageDrawable" format="reference" />
+        <attr name="sj_selected" format="boolean" />
+        <attr name="sj_label_text" />
+    </declare-styleable>
+
 </resources>

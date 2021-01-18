@@ -1,4 +1,53 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="app_name">Record</string>
 
+    <string name="remote_bank_sdk_name" >徕檬视频面签</string>
+    <string name="label_hang">挂断</string>
+    <string name="label_mute">静音</string>
+    <string name="label_speaker">免提</string>
+    <string name="label_tint_waiting_answer">正在等待柜员接听…</string>
+    <string name="label_welcome">感谢您使用徕檬视频面签</string>
+    <string name="label_duration">00:17</string>
+    <string name="label_camera_switch">切换摄像头</string>
+    <string name="content_description">" "</string>
+    <string name="label_remote_screen">投屏</string>
+    <string name="label_voice_only">切换语音</string>
+    <string name="label_video">切换视频</string>
+    <string name="label_input_text">输入文字</string>
+    <string name="label_like">点赞</string>
+    <string name="label_servicing_for">工号 %1$s 正在为您服务</string>
+    <string name="button_send">发送</string>
+    <string name="input_placeholder">输入文字</string>
+    <string name="label_evaluation_title">您对此次服务是否满意？</string>
+    <string name="label_very_nice">超赞</string>
+    <string name="label_normal">一般</string>
+    <string name="label_very_bad">非常差</string>
+    <string name="label_evaluation_placeholder">输入评价内容</string>
+    <string name="label_evaluation_not_now">暂不评价</string>
+    <string name="label_evaluation_submit">提交评价</string>
+    <string name="label_very_satisfied">非常满意</string>
+    <string name="label_very_careful">工作非常细心</string>
+    <string name="label_transfer">我要转账</string>
+    <string name="label_register_account">我要开户</string>
+    <string name="label_query_rest">我要查询余额</string>
+    <string name="label_video_disabled"> </string>
+    <string name="toast_voice_only_eanbled">已切换为纯音频模式</string>
+    <string name="toast_video_eanbled">已切换为视频模式</string>
+    <string name="toast_remote_screen_not_available">当前系统不支持投屏功能。需要 Android 5.0 以上!</string>
+    <string name="notification_screen_sharing">正在投屏!</string>
+    <string name="label_result_reset_password_success">密码重置成功</string>
+    <string name="label_result_reset_password_failure">密码重置失败</string>
+    <string name="label_result_done">完成</string>
+    <string name="label_result_reapply">再次申请</string>
+    <string name="label_result_cancel">取 消</string>
+    <string name="title_biz_result">操作结果</string>
+    <string name="title_password_resetting">密码重置</string>
+    <string name="label_submit">提交</string>
+    <string name="label_confirm">提交</string>
+    <string name="image_content_description" />
+    <string name="yuan">¥</string>
+
+    <string name="ad_folder_files_number">%1$s个文件</string>
+    <string name="ad_file_size">大小:%1$s</string>
+    <string name="fr_file_size_limit">您选择的文件不能超过 %1$d%2$s</string>
 </resources>

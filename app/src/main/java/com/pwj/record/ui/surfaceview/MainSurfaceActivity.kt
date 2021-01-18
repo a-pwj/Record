@@ -22,7 +22,7 @@ class MainSurfaceActivity : AppCompatActivity() {
                 OnItemClickListenr = { position ->
                     when (position) {
                         0 -> startExtActivity<MainCameraActivity>()
-                        2 -> startExtActivity<OpenGL1Activity>()
+                        1 -> startExtActivity<OpenGL1Activity>()
 //                        2 -> startExtActivity<CommentListActivity>()
 //                        3 -> startExtActivity<WebpActivity>()
 ////                        3 -> startExtActivity<ToolsIocActivity>()
@@ -35,7 +35,7 @@ class MainSurfaceActivity : AppCompatActivity() {
     private fun mockData(): Collection<String> {
         return mutableListOf<String>().apply {
             add("自定义相机")
-            add("绘制三角形")
+            add("opengl")
         }
     }
 }

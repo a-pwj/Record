@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.pwj.record.view.EvaluationLevelView
+        android:id="@+id/veryNiceView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:sj_imageDrawable="@mipmap/pj_chaozhan_sel"
+        app:sj_label_text="@string/label_very_nice"
+        app:sj_selected="true" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" />
+
+    <com.pwj.record.view.EvaluationLevelView
+        android:id="@+id/normalView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:sj_imageDrawable="@mipmap/pj_yiban"
+        app:sj_label_text="@string/label_normal" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" />
+
+    <com.pwj.record.view.EvaluationLevelView
+        android:id="@+id/veryBadView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:sj_imageDrawable="@mipmap/pj_bumanyi"
+        app:sj_label_text="@string/label_very_bad" />
+
+</LinearLayout>

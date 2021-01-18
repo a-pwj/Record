@@ -77,4 +77,59 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
 
+
+    <style name="BaseSwitcher">
+        <item name="switcher_width">@dimen/switcher_width</item>
+        <item name="switcher_height">@dimen/switcher_height</item>
+        <item name="switcher_on_color">@color/switcher_on_color</item>
+        <item name="switcher_off_color">@color/switcher_off_color</item>
+        <item name="switcher_icon_color">@color/switcher_icon_color</item>
+        <item name="elevation">@dimen/switcher_elevation</item>
+    </style>
+
+    <style name="Switcher" parent="BaseSwitcher"/>
+
+    <style name="DialogBaseTheme" parent="android:style/Theme.Dialog">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="DialogTheme" parent="DialogBaseTheme">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowSoftInputMode">adjustPan|stateHidden</item>
+    </style>
+
+    <style name="rc_ac_file_manager_title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginLeft">14sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#999999</item>
+    </style>
+
+
+    <style name="rc_ac_file_manager_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_marginLeft">14dp</item>
+        <item name="android:layout_marginRight">14dp</item>
+        <item name="android:background">#dbdbdd</item>
+    </style>
+    <style name="rc_ac_file_manager_image_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">14dp</item>
+        <item name="android:layout_marginRight">9dp</item>
+    </style>
+    <style name="rc_ac_file_manager_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
 </resources>

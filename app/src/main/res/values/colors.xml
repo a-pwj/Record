@@ -4,9 +4,7 @@
     <color name="colorPrimaryDark">#098AF1</color>
     <color name="colorAccent">#86CEEF</color>
 
-    <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="gray">#8e8e8e</color>
     <color name="light_gray">#e0e0e0</color>
     <color name="red">#ff0000</color>
     <color name="text_gray">#2f2f2f</color>
@@ -17,4 +15,35 @@
     <color name="theme">#FF03A9F4</color>
     <color name="theme_pressed">#44a7d4</color>
 
+    <color name="switcher_on_color">#48ea8b</color>
+    <color name="switcher_off_color">#ff4651</color>
+    <color name="switcher_icon_color">@android:color/white</color>
+
+
+    <color name="white">#ffffff</color>
+    <color name="label">#444444</color>
+    <color name="outgoing_label">#585858</color>
+    <color name="highlight_label">#aa888888</color>
+    <color name="separator">#60a0a0a0</color>
+    <color name="ime">#cceeeeee</color>
+    <color name="gray">#888888</color>
+    <color name="light_yellow">#fccf33</color>
+    <color name="badge">#fc0000</color>
+    <color name="userLabel">#fccf33</color>
+
+    <color name="sign_key">#666666</color>
+    <color name="sign_hint">#999999</color>
+
+    <color name="line">#f2f2f2</color>
+    <color name="next_indicator">#dedede</color>
+
+    <color name="edit_cursor">#ffc900</color>
+
+    <color name="grayf9">#f9f9f9</color>
+    <color name="gray_gb">#dddddd</color>
+    <color name="grayc4">#c4c4c4</color>
+    <color name="graye3">#e3e7ee</color>
+    <color name="alipay">#00a5ff</color>
+    <color name="gray_e5">#e5e5e5</color>
+    <color name="leimon_color_333">#333333</color>
 </resources>

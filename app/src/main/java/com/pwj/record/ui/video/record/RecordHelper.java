@@ -868,7 +868,7 @@ public class RecordHelper {
 
     public void start(String filePath, RecordConfig config) {
         currentConfig = config;
-        if (state != RecordState.IDLE) {
+        if (state != RecordState.IDLE && state != RecordState.STOP) {
             ZLog.e(TAG, String.format("状态异常当前状态： %s", state.name()));
             return;
         }
@@ -1008,11 +1008,14 @@ public class RecordHelper {
         private int bufferSize;
 
         public AudioRecordThread() {
-            bufferSize = AudioRecord.getMinBufferSize(currentConfig.getSampleRate(),
-                    currentConfig.getChannelConfig(), currentConfig.getEncodingConfig()) * RECORD_AUDIO_BUFFER_TIMES;
-            ZLog.e(TAG, "record buffer size = " + bufferSize);
-            audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, currentConfig.getSampleRate(),
-                    currentConfig.getChannelConfig(), currentConfig.getEncodingConfig(), bufferSize);
+            if(audioRecord == null){
+                bufferSize = AudioRecord.getMinBufferSize(currentConfig.getSampleRate(),
+                        currentConfig.getChannelConfig(), currentConfig.getEncodingConfig()) * RECORD_AUDIO_BUFFER_TIMES;
+                ZLog.e(TAG, "record buffer size = " + bufferSize);
+                audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, currentConfig.getSampleRate(),
+                        currentConfig.getChannelConfig(), currentConfig.getEncodingConfig(), bufferSize);
+            }
+
             if (currentConfig.getFormat() == RecordFormat.MP3) {
                 if (mp3EncodeThread == null) {
                     initMp3EncoderThread(bufferSize);
@@ -1117,6 +1120,7 @@ public class RecordHelper {
         }
     }
 
+//    FFT频谱图
     private FftFactory fftFactory = new FftFactory(FftFactory.Level.Original);
     private void notifyData(byte[] data) {
         if (recordDataListener == null && recordSoundSizeListener == null && recordFftDataListener == null) {
@@ -1319,6 +1323,7 @@ public class RecordHelper {
 
         byte[] header = WavUtils.generateWavFileHeader((int) resultFile.length(), currentConfig.getSampleRate(), currentConfig.getChannelCount(), currentConfig.getEncoding());
         WavUtils.writeHeader(resultFile, header);
+//        WavUtils.pcmToWav(resultFile,header);
     }
 
     /**

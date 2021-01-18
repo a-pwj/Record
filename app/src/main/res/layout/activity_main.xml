@@ -82,6 +82,11 @@
                 style="@style/text_button"
                 android:text="10、opengl" />
 
+            <TextView
+                android:id="@+id/code11"
+                style="@style/text_button"
+                android:text="10、file" />
+
 
         </LinearLayout>
 

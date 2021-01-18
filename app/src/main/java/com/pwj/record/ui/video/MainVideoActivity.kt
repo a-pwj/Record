@@ -74,6 +74,7 @@ class MainVideoActivity : AppCompatActivity() {
                             startTextureViewToPlayVideo()
                         }
                         4->startExtActivity<MediaRecordActivity>()
+                        5->startExtActivity<MediaRecordTwoActivity>()
                     }
                 }
             }
@@ -87,7 +88,8 @@ class MainVideoActivity : AppCompatActivity() {
             add("调用其自带的播放器")
             add("SurfaceView")
             add("textureVideoView")
-            add("使用MediaRecorder实现分段录制视频，mp4parser合成视频功能")
+            add("AudioRecord 录制音频")
+            add("Media 录制音频")
         }
     }
 

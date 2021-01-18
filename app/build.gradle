@@ -75,6 +75,7 @@ dependencies {
     implementation project(':apt_annotation')
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.documentfile:documentfile:1.0.1'
     kapt project(':apt_compiler')
 
     /** 自定义Fragment注解*/
@@ -117,6 +118,10 @@ dependencies {
     implementation Deps.Others.lottie
     implementation Deps.Others.BRVH
     implementation Deps.Others.okio
+    implementation Deps.Others.seekBar
+    implementation Deps.Others.gravitysnaphelper
+    implementation Deps.Others.pinyin4j
 
     implementation Deps.Permission.andPermission
+
 }
